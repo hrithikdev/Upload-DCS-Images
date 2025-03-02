@@ -4,7 +4,7 @@ const Event = require("../models/Event");
 const upload = require("../middleware/upload");
 
 // Add a new event
-router.post("/", upload.array("images", 5), async (req, res) => {
+router.post("/", upload.array("images", 15), async (req, res) => {
     try {
         const imageUrls = req.files.map(file => file.path); // Get Cloudinary image URLs
         const event = new Event({ ...req.body, images: imageUrls });

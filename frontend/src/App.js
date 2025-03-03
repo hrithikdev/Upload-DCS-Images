@@ -8,9 +8,10 @@ function App() {
     const [date, setDate] = useState("");
     const [description, setDescription] = useState("");
     const [images, setImages] = useState([]);
+    const server = process.env.REACT_APP_SERVER;
 
     useEffect(() => {
-        axios.get("http://localhost:5000/api/events")
+        axios.get(`${server}/api/events`)
             .then(res => setEvents(res.data))
             .catch(err => console.error(err));
     }, []);
@@ -22,7 +23,7 @@ function App() {
         formData.append("date", date);
         // formData.append("description", description);
         images.forEach(image => formData.append("images", image));
-        await axios.post("http://localhost:5000/api/events", formData, {
+        await axios.post(`${server}/api/events`, formData, {
             headers: { "Content-Type": "multipart/form-data" },
         });
 

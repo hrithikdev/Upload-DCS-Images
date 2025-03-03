@@ -33,35 +33,37 @@ function App() {
         <div className="container">
             <h2 className="heading">Admin Panel</h2>
             <form onSubmit={handleSubmit}>
-                <div className="input-container">
-                    <label htmlFor="title">Title:</label>
-                    <input className="inputs" type="text" id="title" placeholder="Event Title" onChange={(e) => setTitle(e.target.value)} required />
-                </div>
-                <div className="input-container">
-                    <label htmlFor="date">Date:</label>
-                    <input className="inputs" type="date" id="date" onChange={(e) => setDate(e.target.value)} required />
-                </div>
-                {/* <div className="input-container">
-                    <label htmlFor="desc">Desription</label>
-                    <textarea placeholder="Description" id="desc" onChange={(e) => setDescription(e.target.value)} />
-                </div> */}
-                <div className="input-container">
-                    <label htmlFor="files">Upload Images:</label>
-                    <input
-                        type="file"
-                        id="files"
-                        className="input-uploadFiles"
-                        multiple
-                        onChange={(e) => setImages(Array.from(e.target.files))}
-                        required
-                    />
+                <div className="inputs">
+                    <div className="input-container">
+                        <label htmlFor="title">Title:</label>
+                        <input className="input" type="text" id="title" placeholder="Event Title" onChange={(e) => setTitle(e.target.value)} required />
+                    </div>
+                    <div className="input-container">
+                        <label htmlFor="date">Date:</label>
+                        <input className="input" type="date" id="date" onChange={(e) => setDate(e.target.value)} required />
+                    </div>
+                    {/* <div className="input-container">
+                        <label htmlFor="desc">Desription</label>
+                        <textarea placeholder="Description" id="desc" onChange={(e) => setDescription(e.target.value)} />
+                    </div> */}
+                    <div className="input-container">
+                        <label htmlFor="files">Upload Images:</label>
+                        <input
+                            type="file"
+                            id="files"
+                            className="input-uploadFiles"
+                            multiple
+                            onChange={(e) => setImages(Array.from(e.target.files))}
+                            required
+                        />
+                    </div>
                 </div>
                 <button type="submit">Add Event</button>
             </form>
 
             <h2 className="heading">Existing Events</h2>
             {events.map((event) => (
-                <div key={event._id}>
+                <div key={event._id} className="event-container">
                     <h3 className="title">{event.title}</h3>
                     <p className="date">{event.date}</p>
                     {event.images.map(img => <img key={img} src={img} alt="event" width="100" />)}

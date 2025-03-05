@@ -32,6 +32,7 @@ function App() {
 
     return (
         <div className="container">
+            <h1>Upload Images to Disha Convent School</h1>
             <h2 className="heading">Admin Panel</h2>
             <form onSubmit={handleSubmit}>
                 <div className="inputs">

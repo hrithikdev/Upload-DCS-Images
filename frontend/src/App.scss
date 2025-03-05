@@ -1,12 +1,61 @@
+$mobile: 480px;
+$tablet: 768px;
+$laptop: 1024px;
+$desktop: 1200px;
+
+
+@mixin respond($breakpoint) {
+    @if $breakpoint == mobile {
+      @media (max-width: 480px) { @content; }
+    } @else if $breakpoint == tablet {
+      @media (max-width: 768px) { @content; }
+    } @else if $breakpoint == laptop {
+      @media (max-width: 1024px) { @content; }
+    } @else if $breakpoint == desktop {
+      @media (max-width: 1200px) { @content; }
+    }
+  }  
+
+
+
 .container{
     width: 100%;
     height: 100%;
     box-sizing: border-box;
     font-size: 1.1rem;
 
+    @include respond(tablet){
+        font-size: 0.9rem;
+    }
+
+    h1{
+        text-align: center;
+        font-size: 2.4rem;
+        color:rgb(97, 167, 224);
+
+        @include respond(laptop){
+            font-size: 2rem;
+        }
+
+        @include respond(tablet){
+            font-size: 1.7rem;
+        }
+
+        @include respond(mobile){
+            font-size: 1.5rem;
+        }
+    }
     h2{
         text-align: center;
         font-size: 2rem;
+
+        @include respond(laptop){
+            font-size: 1.7rem;
+        }
+
+        @include respond(tablet){
+            font-size: 1.6rem;
+        }
     }
 
     form{
@@ -16,7 +65,25 @@
 
         .inputs{
             display: flex;
-            gap: 5rem;
+            gap: 4rem;
+            flex-wrap: wrap;
+
+            @include respond(desktop){
+                gap: 1rem;    
+            }
+
+            @include respond(laptop){
+                gap: 0.8rem;    
+            }
+            
+            @include respond(tablet){
+                gap: 0.5rem;    
+                flex-direction: column;
+            }
+
+            @include respond(mobile){
+                gap: 0.3rem;    
+            }
 
             .input-container{
                 display: flex;
@@ -26,7 +93,7 @@
                 // background-color: red;
     
                 label{
-                    margin: 0.5rem;
+                    margin: 0.4rem;
                     // font-size: 1.1rem;
                 }
     
@@ -54,6 +121,10 @@
         cursor: pointer;
         background-color: black;
         color: white;
+
+        @include respond(tablet){
+            padding: 0.4rem 0.7rem;
+        }
     }
 
     .event-container{
@@ -66,6 +137,10 @@
 
         .title{
             font-size: 1.5rem;
+
+            @include respond(tablet){
+                font-size: 1.2rem;
+            }
         }
 
         img{

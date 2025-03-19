@@ -69,7 +69,7 @@ function App() {
                     <h3 className="title">{event.title}</h3>
                     <p className="date">{event.date}</p>
                     {event.images.map(img => <img key={img} src={img} alt="event" width="100" />)}
-                    <button onClick={() => axios.delete(`http://localhost:5000/api/events/${event._id}`).then(() => window.location.reload())}>
+                    <button onClick={() => axios.delete(`${server}/api/events/${event._id}`).then(() => window.location.reload())}>
                         Delete
                     </button>
                 </div>
